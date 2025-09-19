@@ -1,103 +1,152 @@
-import Image from "next/image";
+import Hero from "@/components/hero";
+import { Section, SectionHeader } from "@/components/ui/section";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { IconHeart, IconCoins, IconShield, IconStar, IconSparkles, IconMoon, IconDiamond, IconWand } from "@tabler/icons-react";
+
+const spellCategories = [
+  {
+    name: "Love Spells",
+    description: "Desire is the oldest spell, whispered since the dawn of fire. Our enchantments do not simply attract, they entwine. Whether to draw a soulmate from the unknown, bind a faltering heart, or awaken passion long thought buried, these spells are woven from threads of obsession, devotion, and fate itself. Love, once called, does not easily release its grip.",
+    icon: IconHeart,
+    color: "text-chart-1",
+    bgColor: "bg-chart-1/10",
+    keywords: "love spells, soulmate attraction, relationship healing, love magic, romance spells"
+  },
+  {
+    name: "Money Spells",
+    description: "From famine’s hunger was born the craft of calling abundance. These rites bend fortune’s gaze toward you, pulling coin, prosperity, and opportunity as if by unseen hands. With incantations older than kings and secrets carried through bloodlines, our wealth spells open doors to success, secure prosperity, and guard what you claim.",
+    icon: IconCoins,
+    color: "text-chart-2",
+    bgColor: "bg-chart-2/10",
+    keywords: "money spells, wealth attraction, financial abundance, prosperity spells, career success"
+  },
+  {
+    name: "Protection Spells",
+    description: "Shadows are not always enemies — they can also stand guard. These spells form unseen barriers against malice, envy, and wandering spirits, shielding your path from harm. The wards are ancient, the charms strong — a circle of silence around your life where no curse, no jealous eye, no hidden strike may enter.",
+    icon: IconShield,
+    color: "text-chart-3",
+    bgColor: "bg-chart-3/10",
+    keywords: "protection spells, psychic protection, negative energy removal, spiritual cleansing, aura protection"
+  },
+  {
+    name: "Healing Spells",
+    description: "Illness, grief, and weariness are not always of the body alone. These spells call on old remedies and lunar rites to restore balance to flesh, heart, and spirit. Blending forgotten cures with energy as primal as the night, our healing enchantments draw out decay and replenish what was taken, leaving strength where weakness lingered.",
+    icon: IconStar,
+    color: "text-chart-4",
+    bgColor: "bg-chart-4/10",
+    keywords: "healing spells, energy healing, spiritual healing, wellness magic, emotional healing"
+  },
+  {
+    name: "Success Spells",
+    description: "Power is not given, it is taken — or summoned. These enchantments tip the scales in your favor, bending decisions, opening doors, and silencing rivals. Whether you seek to rise in career, dominate in ambition, or simply command the respect you are owed, success spells carve your name into fate’s script with unshakable ink.",
+    icon: IconSparkles,
+    color: "text-chart-5",
+    bgColor: "bg-chart-5/10",
+    keywords: "success spells, career spells, opportunity attraction, manifestation spells, life transformation"
+  }
+];
+
+const mysticalFeatures = [
+  {
+        title: "Ancient Lineage",
+        description:
+          "These rites are not inventions of the present, but inheritances. Passed from night-witches, seers, and covens long hidden, every spell carries the weight of centuries.",
+        icon: IconMoon,
+      },
+      {
+        title: "The Personal Thread",
+        description:
+          "No two castings are the same. Each spell is stitched to the seeker’s own spirit, hunger, and circumstance — ensuring the magic binds where it must, and only to you.",
+        icon: IconDiamond,
+      },
+      {
+        title: "Keepers of the Craft",
+        description:
+          "Our practitioners are not merchants of charms, but guardians of forgotten pacts. Decades in shadowed study and living practice make their work unbroken, untainted, and alive.",
+        icon: IconWand,
+      },
+];
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div>
+      <Hero />
+      
+      {/* Spell Categories Section */}
+      <Section className="bg-muted/30">
+        <SectionHeader
+          title="Powerful Spells"
+          subtitle="Ancient Magic"
+          description="Discover our collection of authentic spells crafted by master practitioners using ancient wisdom and modern energy work techniques."
+          centered
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {spellCategories.map((category, index) => {
+            const IconComponent = category.icon;
+            return (
+              <Card key={index} hover className="h-full">
+                <CardHeader>
+                  <div className={`w-16 h-16 ${category.bgColor} rounded-full flex items-center justify-center mb-4`}>
+                    <IconComponent className={`w-8 h-8 ${category.color}`} />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">
+                    {category.name}
+                  </h3>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {category.description}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </Section>
+
+      {/* Mystical Features Section */}
+      <Section>
+        <SectionHeader
+          title="Authentic Magic"
+    description="Not tricks, not illusions — but whispers carried through centuries, shaped by shadows, and bound by those who still remember the old ways."
+    centered
+        />
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {mysticalFeatures.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <div key={index} className="text-center">
+                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <IconComponent className="w-10 h-10 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* Call to Action Section */}
+      <Section className="bg-muted/30">
+        <div className="text-center max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            Ready to Transform Your Life with Ancient Magic?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            Join thousands of satisfied clients who have experienced the life-changing power of our authentic spell casting services. 
+            Whether you need love spells, money spells, healing spells, protection spells, or success spells, our master practitioners 
+            are ready to help you manifest your deepest desires and unlock your true potential.
+          </p>
+        </div>
+      </Section>
+
     </div>
   );
 }
