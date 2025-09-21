@@ -8,8 +8,32 @@ import {useState} from 'react'
 export default function NavBar(){
     const navItems = [
         {
+            name: "Home",
+            link: "/"
+        },
+        {
             name: "Shop",
             link: "/shop"
+        },
+        {
+            name: "Library",
+            link: "/library"
+        },
+        {
+            name: "Oracle",
+            link: "/oracle"
+        },
+        {
+            name: "Stories",
+            link: "/stories"
+        },
+        {
+            name: "How It Works",
+            link: "/how-it-works"
+        },
+        {
+            name: "About",
+            link: "/about"
         },
     ]
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
