@@ -60,4 +60,17 @@ export function CardFooter({ children, className }: CardFooterProps) {
   );
 }
 
+interface CardTitleProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardTitle({ children, className }: CardTitleProps) {
+  return (
+    <h3 className={cn("text-2xl font-semibold leading-none tracking-tight", className)}>
+      {children}
+    </h3>
+  );
+}
+
 

@@ -1,7 +1,12 @@
+"use client";
+
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Modal } from "@/components/ui/modal";
+import { SpellForm, type SpellFormData } from "@/components/forms/spell-form";
 import { IconStar, IconHeart, IconShield, IconCoins, IconSparkles } from "@tabler/icons-react";
+import { useState } from "react";
 
 const products = [
   {
@@ -77,6 +82,42 @@ const categories = [
 ];
 
 export default function ShopPage() {
+  const [selectedSpell, setSelectedSpell] = useState<{
+    id: number;
+    name: string;
+    category: string;
+    price: number;
+  } | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handlePurchaseClick = (product: {
+    id: number;
+    name: string;
+    category: string;
+    price: number;
+  }) => {
+    setSelectedSpell({
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      price: product.price
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setSelectedSpell(null);
+  };
+
+  const handleFormSubmit = (formData: SpellFormData) => {
+    // This is now handled in the SpellForm component
+    // The form will submit to your email automatically
+    console.log('Spell request submitted:', formData);
+    alert('Spell request submitted successfully! We will contact you within 24 hours.');
+    handleModalClose();
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -159,6 +200,7 @@ export default function ShopPage() {
                     variant="mystical" 
                     className="w-full"
                     size="lg"
+                    onClick={() => handlePurchaseClick(product)}
                   >
                     Purchase Spell
                   </Button>
@@ -213,6 +255,24 @@ export default function ShopPage() {
           </div>
         </div>
       </Section>
+
+      {/* Modal */}
+      {selectedSpell && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleModalClose}
+          title={`${selectedSpell.name} - Spell Request Form`}
+          size="lg"
+        >
+          <SpellForm
+            spellType={selectedSpell.category}
+            spellName={selectedSpell.name}
+            price={selectedSpell.price}
+            onSubmit={handleFormSubmit}
+            onClose={handleModalClose}
+          />
+        </Modal>
+      )}
     </div>
   );
 }
